@@ -8,25 +8,27 @@ Install/Uninstall
 	adb install D:\Mobile\app-debug.apk
 1.1 установка повторно
 	adb install -r D:\Mobile\app-debug.apk
+	
 2. Удаление приложения с mobile
 	adb uninstall <package name>
     2.1 узнать имя packages
 	adb shell pm list packages todolist 
 	2.2 узнать путь package
 	adb shell pm path com.android.todolist
+	
 3. Start and stop app
-adb shell am start -n com.android.todolist/com.android.todolist.MainActivity
-
-adb shell am force-stop <packages name> --user all
-
+3.1 Start app
+	adb shell am start -n com.android.todolist/com.android.todolist.MainActivity
+3.2 Stop app
+	adb shell am force-stop <packages name> --user all
 
 4. Screenshot (only .png)
-	3.1 Create screenshot
+	4.1 Create screenshot
 	adb shell screencap /sdcard/screen.png
-	3.2 Move to desktop
+	4.2 Move to desktop
 	adb pull /sdcard/screen.png D:\Mobile\
 5. Video 
-	4.1 Create record (only .mp4, max time long 180 sec == 3 min)
+	5.1 Create record (only .mp4, max time long 180 sec == 3 min)
 	adb shell screenrecord /sdcard/movie.mp4
 	CTL+C - stop and save record
 	--help	Displays command syntax and options
@@ -37,20 +39,19 @@ adb shell am force-stop <packages name> --user all
 	--rotate	Rotates the output 90 degrees. This feature is experimental.
 	--verbose	Displays log information on the command-line screen. If you do not set this option, the utility does not display any information while running.
 6. Logs
-	5.1 
+	6.1 
 	adb logcat 
-	5.2 save to file
+	6.2 save to file
 	adb logcat >> d:\Mobile\log.txt
-	5.3. все логи из буфера на данный момент, но не дописывать
+	6.3. все логи из буфера на данный момент, но не дописывать
 	adb logcat -d
-	5.4  очистка буфера логов
+	6.4  очистка буфера логов
 	adb logcat -c
-	5.5 вывод логов последовательно по времени
+	6.5 вывод логов последовательно по времени
 	adb logcat -v time
-	5.6 вывод логов определенного packages
-	adb logcat com.android.todolist
-	5.7 logs определенного priority (Verbose, Debug, Info, Warning, Error or Fatal)
+	6.6 вывод логов определенного packages
 	adb logcat | findstr com.example.package
+	6.7 logs определенного priority (Verbose, Debug, Info, Warning, Error or Fatal)
 	adb logcat -c && adb logcat com.example.package:V
 	adb logcat --pid=3948 *:E
 	
@@ -58,13 +59,13 @@ adb shell am force-stop <packages name> --user all
 Pull/Copy Files from Android device: adb pull /sdcard/Android/log.txt
 Push/Copy Files to Android device: adb push example.txt /sdcard/Android
 	
-6. Информация о девайсе
+7. Информация о девайсе
 	adb -d shell getprop ro.serialno - серийный номер
 	adb -d shell getprop ro.product.model - модель девайса
 	adb -d shell getprop ro.build.display.id - номер билда
 	adb -d shell getprop ro.build.version.release - серийный номер
 	
-7. Информация о системе и управление параметрами
+8. Информация о системе и управление параметрами
 	adb shell dumsys battary
 	adb shell ps - show all processes
 	
