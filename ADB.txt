@@ -50,7 +50,7 @@ Install/Uninstall
 	6.5 вывод логов последовательно по времени
 	adb logcat -v time
 	6.6 вывод логов определенного packages
-	adb logcat | findstr com.example.package
+	adb logcat *:E | findstr com.example.package >> d:\Mobile\log.txt
 	6.7 logs определенного priority (Verbose, Debug, Info, Warning, Error or Fatal)
 	adb logcat -c && adb logcat com.example.package:V
 	adb logcat --pid=3948 *:E
